@@ -1,5 +1,6 @@
 # CppJieba Server
 
+[![Build Status](https://travis-ci.org/yanyiwu/cppjieba-server.png?branch=master)](https://travis-ci.org/yanyiwu/cppjieba-server) 
 [![Author](https://img.shields.io/badge/author-@yanyiwu-blue.svg?style=flat)](http://yanyiwu.com/) 
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat)](http://yanyiwu.mit-license.org)
 
