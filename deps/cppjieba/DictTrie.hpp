@@ -115,17 +115,21 @@ class DictTrie {
 					buf[0],
 					atof(buf[1].c_str()),
 					buf[2]);
+    		LOG(INFO) << "MakeNodeInfo_UserDict_size_3" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
 		}else if(2 == buf.size()){
 			MakeNodeInfo(node_info,
 					buf[0],
 					user_word_default_weight_,
 					buf[1]);
+    		LOG(INFO) << "MakeNodeInfo_UserDict_size_2" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
 		}else{
 			MakeNodeInfo(node_info,
 					buf[0],
 					user_word_default_weight_,
 					(buf.size() == 2 ? buf[1] : UNKNOWN_TAG));
+    		LOG(INFO) << "MakeNodeInfo_UserDict_size_1" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
 		}
+
 
         static_node_infos_.push_back(node_info);
         if (node_info.word.size() == 1) {
