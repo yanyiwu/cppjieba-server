@@ -95,6 +95,7 @@ class DictTrie {
   void LoadUserDict(const string& filePaths) {
     vector<string> files = limonp::Split(filePaths, "|;");
     size_t lineno = 0;
+
     for (size_t i = 0; i < files.size(); i++) {
       ifstream ifs(files[i].c_str());
       CHECK(ifs.is_open()) << "open " << files[i] << " failed"; 
@@ -108,10 +109,24 @@ class DictTrie {
         buf.clear();
         Split(line, buf, " ");
         DictUnit node_info;
-        MakeNodeInfo(node_info, 
-              buf[0], 
-              user_word_default_weight_,
-              (buf.size() == 2 ? buf[1] : UNKNOWN_TAG));
+
+		if(3 == buf.size()){
+			MakeNodeInfo(node_info,
+					buf[0],
+					atof(buf[1].c_str()),
+					buf[2]);
+		}else if(2 == buf.size()){
+			MakeNodeInfo(node_info,
+					buf[0],
+					user_word_default_weight_,
+					buf[1]);
+		}else{
+			MakeNodeInfo(node_info,
+					buf[0],
+					user_word_default_weight_,
+					(buf.size() == 2 ? buf[1] : UNKNOWN_TAG));
+		}
+
         static_node_infos_.push_back(node_info);
         if (node_info.word.size() == 1) {
           user_dict_single_chinese_word_.insert(node_info.word[0]);
