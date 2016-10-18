@@ -106,6 +106,8 @@ class DictTrie {
         if (line.size() == 0) {
           continue;
         }
+
+
         buf.clear();
         Split(line, buf, " ");
         DictUnit node_info;
@@ -115,19 +117,19 @@ class DictTrie {
 					buf[0],
 					atof(buf[1].c_str()),
 					buf[2]);
-    		LOG(INFO) << "MakeNodeInfo_UserDict_size_3" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
+			LOG(DEBUG) << "load_user_dict" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
 		}else if(2 == buf.size()){
 			MakeNodeInfo(node_info,
 					buf[0],
 					user_word_default_weight_,
 					buf[1]);
-    		LOG(INFO) << "MakeNodeInfo_UserDict_size_2" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
+			LOG(DEBUG) << "load_user_dict" << buf[0] << "  " << user_word_default_weight_ << "  " << buf[1]  << ", lines: " << lineno;
 		}else{
 			MakeNodeInfo(node_info,
 					buf[0],
 					user_word_default_weight_,
-					(buf.size() == 2 ? buf[1] : UNKNOWN_TAG));
-    		LOG(INFO) << "MakeNodeInfo_UserDict_size_1" << buf[0] << "  " << buf[1] << "  " << buf[2]  << ", lines: " << lineno;
+					UNKNOWN_TAG);
+			LOG(DEBUG) << "load_user_dict" << buf[0] << "  " << user_word_default_weight_ << "  " << UNKNOWN_TAG  << ", lines: " << lineno;
 		}
 
 

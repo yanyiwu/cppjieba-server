@@ -1,12 +1,13 @@
 #!/bin/sh
 
 PATH=/usr/bin/:/usr/local/bin/:/sbin/:$PATH
-
 PID=`pidof cjserver`
+
 if [ ! -z "${PID}" ]
 then
     echo "please stop cjserver first."
 else
-    /usr/local/cppjieba-server/bin/cjserver /usr/local/cppjieba-server/conf/server.conf >> /dev/null 2>&1 &
+    mkdir -p /usr/local/cppjieba-server/log
+    /usr/local/cppjieba-server/bin/cjserver /usr/local/cppjieba-server/conf/server.conf >> /usr/local/cppjieba-server/log/cjserver.log 2>&1 &
     echo "service started."
 fi
